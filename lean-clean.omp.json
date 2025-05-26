@@ -7,7 +7,7 @@
     "crust": "#11111b",
     "flamingo": "#f2cdcd",
     "green": "#a6e3a1",
-    "orange": "#fab387",
+    "orange": "#fb923c",
     "lavender": "#b4befe",
     "maroon": "#eba0ac",
     "mauve": "#cba6f7",
@@ -15,7 +15,6 @@
     "pink": "#f5c2e7",
     "red": "#f38ba8",
     "rosewater": "#f5e0dc",
-    "sapphire": "#74c7ec",
     "sky": "#89dceb",
     "subtext1": "#bac2de",
     "surface0": "#313244",
@@ -44,8 +43,8 @@
             "fetch_version": true,
             "fetch_virtual_env": true
           },
-          "template": "\ue73c {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
-          "foreground": "p:yellow",
+          "template": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
+          "foreground": "p:flamingo",
           "type": "python",
           "style": "plain"
         },
@@ -55,7 +54,7 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": "\ue724 {{ if .Version }}{{ .Version }}{{ end }}",
+          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
           "foreground": "p:sky",
           "type": "go",
           "style": "plain"
@@ -75,7 +74,7 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": "\ue7a8 {{ if .Version }}{{ .Version }}{{ end }}",
+          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
           "foreground": "p:mauve",
           "type": "rust",
           "style": "plain"
@@ -84,9 +83,9 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "{{ if gt .Code 0 }}\uf071 {{ .Code }}{{ end }}",
+          "template": "{{ if gt .Code 0 }} {{ .Code }}{{ end }}",
           "foreground": "p:red",
-          "type": "exit",
+          "type": "text",
           "style": "plain"
         }
       ]
@@ -98,8 +97,8 @@
         {
           "properties": {
             "cache_duration": "none",
-            "folder_icon": "\uf115",
-            "home_icon": "\uf015",
+            "folder_icon": "",
+            "home_icon": "",
             "style": "agnoster_short"
           },
           "template": "{{ .Path }}",
@@ -118,28 +117,28 @@
         },
         {
           "properties": {
-            "branch_ahead_icon": "\uf062",
-            "branch_behind_icon": "\uf063",
-            "branch_gone_icon": "\u2262",
-            "branch_icon": "\ue725 ",
-            "branch_identical_icon": "\u2261",
+            "branch_ahead_icon": "",
+            "branch_behind_icon": "",
+            "branch_gone_icon": "≢",
+            "branch_icon": " ",
+            "branch_identical_icon": "≡",
             "branch_max_length": 25,
             "cache_duration": "none",
-            "cherry_pick_icon": "\ue29b ",
-            "commit_icon": "\uf417",
+            "cherry_pick_icon": " ",
+            "commit_icon": "",
             "fetch_stash_count": true,
             "fetch_status": true,
             "fetch_upstream_icon": true,
-            "merge_icon": "\ue727 ",
-            "no_commits_icon": "\uf594 ",
-            "rebase_icon": "\ue728 ",
-            "revert_icon": "\uf0e2 ",
+            "merge_icon": " ",
+            "no_commits_icon": " ",
+            "rebase_icon": " ",
+            "revert_icon": " ",
             "staging_color": "p:green",
-            "stash_icon": "\ueb4b",
-            "tag_icon": "\uf02b",
-            "working_color": "p:orange"
+            "stash_icon": "",
+            "tag_icon": "",
+            "working_color": "p:peach"
           },
-          "template": "{{ if .RepoName }}{{ .UpstreamIcon }}{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if or .Staging.Changed .Working.Changed }} {{ end }}{{ if .Staging.Changed }}<p:green>\uf046 {{ .Staging.String }}</>{{ end }}{{ if and .Staging.Changed .Working.Changed }} {{ end }}{{ if .Working.Changed }}<p:orange>\uf044 {{ .Working.String }}</>{{ end }}{{ if gt .StashCount 0 }} {{ .stash_icon }} {{ .StashCount }}{{ end }}{{ if and (gt .Ahead 0) (gt .Behind 0) }} {{ .branch_ahead_icon }}{{ .Ahead }} {{ .branch_behind_icon }}{{ .Behind }}{{ else if gt .Ahead 0 }} {{ .branch_ahead_icon }}{{ .Ahead }}{{ else if gt .Behind 0 }} {{ .branch_behind_icon }}{{ .Behind }}{{ end }}{{ end }}",
+          "template": "{{ if .RepoName }}{{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if or .Staging.Changed .Working.Changed }} {{ end }}{{ if .Staging.Changed }}<p:green> {{ .Staging.String }}</>{{ end }}{{ if and .Staging.Changed .Working.Changed }} {{ end }}{{ if .Working.Changed }}<p:peach> {{ .Working.String }}</>{{ end }}{{ if gt .StashCount 0 }} {{ .stash_icon }} {{ .StashCount }}{{ end }}{{ if and (gt .Ahead 0) (gt .Behind 0) }} {{ .branch_ahead_icon }}{{ .Ahead }} {{ .branch_behind_icon }}{{ .Behind }}{{ else if gt .Ahead 0 }} {{ .branch_ahead_icon }}{{ .Ahead }}{{ else if gt .Behind 0 }} {{ .branch_behind_icon }}{{ .Behind }}{{ end }}{{ end }}",
           "foreground": "p:mauve",
           "type": "git",
           "style": "plain",
@@ -153,8 +152,8 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": " ❯",
-          "foreground": "p:green",
+          "template": "{{ if .Segments.Git }} {{ end }}❯",
+          "foreground": "p:yellow",
           "type": "text",
           "style": "plain",
           "foreground_templates": ["{{ if .Root }}p:red{{ end }}"]
