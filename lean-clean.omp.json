@@ -43,7 +43,7 @@
             "fetch_version": true,
             "fetch_virtual_env": true
           },
-          "template": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
+          "template": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
           "foreground": "p:flamingo",
           "type": "python",
           "style": "plain"
@@ -54,18 +54,9 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
+          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
           "foreground": "p:sky",
           "type": "go",
-          "style": "plain"
-        },
-        {
-          "properties": {
-            "cache_duration": "none"
-          },
-          "template": "{{ if .Segments.Go }} ❯ {{ end }}",
-          "foreground": "p:lavender",
-          "type": "text",
           "style": "plain"
         },
         {
@@ -74,7 +65,7 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
+          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
           "foreground": "p:mauve",
           "type": "rust",
           "style": "plain"
@@ -83,9 +74,9 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "{{ if gt .Code 0 }} {{ .Code }}{{ end }}",
+          "template": "{{ if gt .Code 0 }} {{ .Code }}{{ end }}",
           "foreground": "p:red",
-          "type": "text",
+          "type": "exit",
           "style": "plain"
         }
       ]
@@ -117,28 +108,28 @@
         },
         {
           "properties": {
-            "branch_ahead_icon": "",
-            "branch_behind_icon": "",
+            "branch_ahead_icon": "↑",
+            "branch_behind_icon": "↓",
             "branch_gone_icon": "≢",
-            "branch_icon": " ",
-            "branch_identical_icon": "≡",
+            "branch_icon": "",
+            "branch_identical_icon": "=",
             "branch_max_length": 25,
             "cache_duration": "none",
-            "cherry_pick_icon": " ",
+            "cherry_pick_icon": "",
             "commit_icon": "",
             "fetch_stash_count": true,
             "fetch_status": true,
             "fetch_upstream_icon": true,
-            "merge_icon": " ",
-            "no_commits_icon": " ",
-            "rebase_icon": " ",
-            "revert_icon": " ",
+            "merge_icon": "",
+            "no_commits_icon": "",
+            "rebase_icon": "",
+            "revert_icon": "",
             "staging_color": "p:green",
             "stash_icon": "",
             "tag_icon": "",
             "working_color": "p:peach"
           },
-          "template": "{{ if .RepoName }}{{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if or .Staging.Changed .Working.Changed }} {{ end }}{{ if .Staging.Changed }}<p:green> {{ .Staging.String }}</>{{ end }}{{ if and .Staging.Changed .Working.Changed }} {{ end }}{{ if .Working.Changed }}<p:peach> {{ .Working.String }}</>{{ end }}{{ if gt .StashCount 0 }} {{ .stash_icon }} {{ .StashCount }}{{ end }}{{ if and (gt .Ahead 0) (gt .Behind 0) }} {{ .branch_ahead_icon }}{{ .Ahead }} {{ .branch_behind_icon }}{{ .Behind }}{{ else if gt .Ahead 0 }} {{ .branch_ahead_icon }}{{ .Ahead }}{{ else if gt .Behind 0 }} {{ .branch_behind_icon }}{{ .Behind }}{{ end }}{{ end }}",
+          "template": "{{ if .RepoName }}{{ .UpstreamIcon }} {{ .HEAD }} {{ if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <p:peach>{{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ end }}",
           "foreground": "p:mauve",
           "type": "git",
           "style": "plain",
@@ -152,7 +143,7 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "{{ if .Segments.Git }} {{ end }}❯",
+          "template": " ❯",
           "foreground": "p:yellow",
           "type": "text",
           "style": "plain",
