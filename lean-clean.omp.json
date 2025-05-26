@@ -153,9 +153,9 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "❯",
+          "template": " ❯",
           "foreground": "p:green",
-          "type": "root",
+          "type": "text",
           "style": "plain",
           "foreground_templates": ["{{ if .Root }}p:red{{ end }}"]
         }
