@@ -1,0 +1,175 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "base": "#1e1d2d",
+    "blue": "#89b4fa",
+    "crust": "#11111b",
+    "flamingo": "#f2cdcd",
+    "green": "#a6e3a1",
+    "orange": "#fab387",
+    "lavender": "#b4befe",
+    "maroon": "#eba0ac",
+    "mauve": "#cba6f7",
+    "peach": "#fab387",
+    "pink": "#f5c2e7",
+    "red": "#f38ba8",
+    "rosewater": "#f5e0dc",
+    "sapphire": "#74c7ec",
+    "sky": "#89dceb",
+    "subtext1": "#bac2de",
+    "surface0": "#313244",
+    "surface1": "#45475a",
+    "teal": "#94e2d5",
+    "text": "#cdd6f4",
+    "yellow": "#f9e2af"
+  },
+  "secondary_prompt": {
+    "template": "❯ ",
+    "foreground": "p:sky"
+  },
+  "transient_prompt": {
+    "template": "❯ ",
+    "foreground": "p:green",
+    "foreground_templates": ["{{ if .Root }}p:red{{ end }}"]
+  },
+  "blocks": [
+    {
+      "type": "rprompt",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "context",
+            "fetch_version": true,
+            "fetch_virtual_env": true
+          },
+          "template": "\ue73c {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
+          "foreground": "p:yellow",
+          "type": "python",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "context",
+            "fetch_version": true
+          },
+          "template": "\ue724 {{ if .Version }}{{ .Version }}{{ end }}",
+          "foreground": "p:sky",
+          "type": "go",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ if .Segments.Go }} ❯ {{ end }}",
+          "foreground": "p:lavender",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "context",
+            "fetch_version": true
+          },
+          "template": "\ue7a8 {{ if .Version }}{{ .Version }}{{ end }}",
+          "foreground": "p:mauve",
+          "type": "rust",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ if gt .Code 0 }}\uf071 {{ .Code }}{{ end }}",
+          "foreground": "p:red",
+          "type": "text",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "folder_icon": "\uf115",
+            "home_icon": "\uf015",
+            "style": "agnoster_short"
+          },
+          "template": "{{ .Path }}",
+          "foreground": "p:blue",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " • ",
+          "foreground": "p:sky",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "branch_ahead_icon": "\uf062",
+            "branch_behind_icon": "\uf063",
+            "branch_gone_icon": "\u2262",
+            "branch_icon": "\ue725 ",
+            "branch_identical_icon": "\u2261",
+            "branch_max_length": 25,
+            "cache_duration": "none",
+            "cherry_pick_icon": "\ue29b ",
+            "commit_icon": "\uf417",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "merge_icon": "\ue727 ",
+            "no_commits_icon": "\uf594 ",
+            "rebase_icon": "\ue728 ",
+            "revert_icon": "\uf0e2 ",
+            "staging_color": "p:green",
+            "stash_icon": "\ueb4b",
+            "tag_icon": "\uf02b",
+            "working_color": "p:orange"
+          },
+          "template": "{{ if .RepoName }}{{ .UpstreamIcon }}{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if or .Staging.Changed .Working.Changed }} {{ end }}{{ if .Staging.Changed }}<p:green>\uf046 {{ .Staging.String }}</>{{ end }}{{ if and .Staging.Changed .Working.Changed }} {{ end }}{{ if .Working.Changed }}<p:peach>\uf044 {{ .Working.String }}</>{{ end }}{{ if gt .StashCount 0 }} {{ .stash_icon }} {{ .StashCount }}{{ end }}{{ if and (gt .Ahead 0) (gt .Behind 0) }} {{ .branch_ahead_icon }}{{ .Ahead }} {{ .branch_behind_icon }}{{ .Behind }}{{ else if gt .Ahead 0 }} {{ .branch_ahead_icon }}{{ .Ahead }}{{ else if gt .Behind 0 }} {{ .branch_behind_icon }}{{ .Behind }}{{ end }}{{ end }}",
+          "foreground": "p:mauve",
+          "type": "git",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}",
+            "{{ if gt .Ahead 0 }}p:mauve{{ end }}",
+            "{{ if gt .Behind 0 }}p:mauve{{ end }}"
+          ]
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ if .Segments.Git }} ❯{{ end }}",
+          "foreground": "p:sky",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "❯",
+          "foreground": "p:green",
+          "type": "root",
+          "style": "plain",
+          "foreground_templates": ["{{ if .Root }}p:red{{ end }}"]
+        }
+      ]
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
