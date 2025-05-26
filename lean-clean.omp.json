@@ -3,6 +3,7 @@
   "palette": {
     "base": "#1e1d2d",
     "blue": "#89b4fa",
+    "indigo": "#cdd6f4",
     "crust": "#11111b",
     "flamingo": "#f2cdcd",
     "green": "#a6e3a1",
@@ -85,7 +86,7 @@
           },
           "template": "{{ if gt .Code 0 }}\uf071 {{ .Code }}{{ end }}",
           "foreground": "p:red",
-          "type": "text",
+          "type": "exit",
           "style": "plain"
         }
       ]
@@ -111,7 +112,7 @@
             "cache_duration": "none"
           },
           "template": " • ",
-          "foreground": "p:sky",
+          "foreground": "p:yellow",
           "type": "text",
           "style": "plain"
         },
@@ -138,7 +139,7 @@
             "tag_icon": "\uf02b",
             "working_color": "p:orange"
           },
-          "template": "{{ if .RepoName }}{{ .UpstreamIcon }}{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if or .Staging.Changed .Working.Changed }} {{ end }}{{ if .Staging.Changed }}<p:green>\uf046 {{ .Staging.String }}</>{{ end }}{{ if and .Staging.Changed .Working.Changed }} {{ end }}{{ if .Working.Changed }}<p:peach>\uf044 {{ .Working.String }}</>{{ end }}{{ if gt .StashCount 0 }} {{ .stash_icon }} {{ .StashCount }}{{ end }}{{ if and (gt .Ahead 0) (gt .Behind 0) }} {{ .branch_ahead_icon }}{{ .Ahead }} {{ .branch_behind_icon }}{{ .Behind }}{{ else if gt .Ahead 0 }} {{ .branch_ahead_icon }}{{ .Ahead }}{{ else if gt .Behind 0 }} {{ .branch_behind_icon }}{{ .Behind }}{{ end }}{{ end }}",
+          "template": "{{ if .RepoName }}{{ .UpstreamIcon }}{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if or .Staging.Changed .Working.Changed }} {{ end }}{{ if .Staging.Changed }}<p:green>\uf046 {{ .Staging.String }}</>{{ end }}{{ if and .Staging.Changed .Working.Changed }} {{ end }}{{ if .Working.Changed }}<p:orange>\uf044 {{ .Working.String }}</>{{ end }}{{ if gt .StashCount 0 }} {{ .stash_icon }} {{ .StashCount }}{{ end }}{{ if and (gt .Ahead 0) (gt .Behind 0) }} {{ .branch_ahead_icon }}{{ .Ahead }} {{ .branch_behind_icon }}{{ .Behind }}{{ else if gt .Ahead 0 }} {{ .branch_ahead_icon }}{{ .Ahead }}{{ else if gt .Behind 0 }} {{ .branch_behind_icon }}{{ .Behind }}{{ end }}{{ end }}",
           "foreground": "p:mauve",
           "type": "git",
           "style": "plain",
@@ -147,15 +148,6 @@
             "{{ if gt .Ahead 0 }}p:mauve{{ end }}",
             "{{ if gt .Behind 0 }}p:mauve{{ end }}"
           ]
-        },
-        {
-          "properties": {
-            "cache_duration": "none"
-          },
-          "template": "{{ if .Segments.Git }} ❯{{ end }}",
-          "foreground": "p:sky",
-          "type": "text",
-          "style": "plain"
         },
         {
           "properties": {
