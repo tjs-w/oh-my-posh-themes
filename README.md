@@ -37,6 +37,8 @@ oh-my-posh init fish --config /path/to/lean-clean.omp.json | source
 
 ### Preview
 
+![Lean Clean Theme Preview](lean-clean.png)
+
 ```
 ~/code/project • master ≡ ?1 ❯❯ 
 ```
