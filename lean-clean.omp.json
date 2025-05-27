@@ -30,7 +30,7 @@
   },
   "transient_prompt": {
     "template": "❯ ",
-    "foreground": "p:green",
+    "foreground": "p:yellow",
     "foreground_templates": ["{{ if .Root }}p:red{{ end }}"]
   },
   "blocks": [
@@ -44,7 +44,7 @@
             "fetch_version": true,
             "fetch_virtual_env": true
           },
-          "template": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
+          "template": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
           "foreground": "p:flamingo",
           "type": "python",
           "style": "plain"
@@ -55,7 +55,7 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
+          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
           "foreground": "p:cyan",
           "type": "go",
           "style": "plain"
@@ -66,16 +66,17 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
+          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
           "foreground": "p:mauve",
           "type": "rust",
           "style": "plain"
         },
         {
           "properties": {
-            "cache_duration": "none"
+            "cache_duration": "none",
+            "display_mode": "context"
           },
-          "template": " {{ if .Node }} {{ .Node }}{{ end }}",
+          "template": " {{ if .Node }} {{ .Node }}{{ end }}",
           "foreground": "p:peach",
           "type": "node",
           "style": "plain"
@@ -98,8 +99,8 @@
         {
           "properties": {
             "cache_duration": "none",
-            "folder_icon": "",
-            "home_icon": "",
+            "folder_icon": "",
+            "home_icon": "",
             "style": "agnoster_short"
           },
           "template": "{{ .Path }}",
@@ -111,43 +112,22 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "{{ if .Segments.Git }}\u2009•\u202f{{ end }}",
+          "template": "{{ if .Segments.Git }} • {{ end }}",
           "foreground": "p:yellow",
           "type": "text",
           "style": "plain"
         },
         {
           "properties": {
-            "branch_ahead_icon": "↑",
-            "branch_behind_icon": "↓",
-            "branch_gone_icon": "≢",
-            "branch_icon": "",
-            "branch_identical_icon": "=",
-            "branch_max_length": 25,
             "cache_duration": "none",
-            "cherry_pick_icon": "",
-            "commit_icon": "",
-            "fetch_stash_count": true,
             "fetch_status": true,
-            "fetch_upstream_icon": true,
-            "merge_icon": "",
-            "no_commits_icon": "󰅌",
-            "rebase_icon": "",
-            "revert_icon": "",
-            "stash_icon": "",
-            "tag_icon": "",
-            "working_color": "p:peach",
-            "staging_color": "p:green"
+            "fetch_stash_count": true,
+            "fetch_upstream_icon": true
           },
-          "template": "{{ if .RepoName }}{{ .UpstreamIcon }} <p:peach>{{ .HEAD }}</p:peach> {{ if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <p:peach>{{ .Working.String }}</p:peach>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</p:green>{{ end }}{{ end }}",
-          "foreground": "p:mauve",
+          "template": "{{ if .RepoName }}{{ if .Staging.Changed }}<p:mauve>{{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}</p:mauve>{{ if .Working.Changed }} <p:mauve>△{{ .Working.Modified }}</p:mauve>{{ end }} <p:mauve>▲{{ .Staging.Modified }}</p:mauve>{{ else if .Working.Changed }}<p:peach>{{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}</p:peach> <p:peach>△{{ .Working.Modified }}</p:peach>{{ else }}<p:green>{{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}</p:green>{{ end }}{{ end }}",
+          "foreground": "p:green",
           "type": "git",
-          "style": "plain",
-          "foreground_templates": [
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}",
-            "{{ if gt .Ahead 0 }}p:mauve{{ end }}",
-            "{{ if gt .Behind 0 }}p:mauve{{ end }}"
-          ]
+          "style": "plain"
         },
         {
           "properties": {
