@@ -44,7 +44,7 @@
             "fetch_version": true,
             "fetch_virtual_env": true
           },
-          "template": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
+          "template": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
           "foreground": "p:flamingo",
           "type": "python",
           "style": "plain"
@@ -55,7 +55,7 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
+          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
           "foreground": "p:cyan",
           "type": "go",
           "style": "plain"
@@ -66,7 +66,7 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
+          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
           "foreground": "p:mauve",
           "type": "rust",
           "style": "plain"
@@ -75,7 +75,7 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": " {{ if .Node }} {{ .Node }}{{ end }}",
+          "template": " {{ if .Node }} {{ .Node }}{{ end }}",
           "foreground": "p:peach",
           "type": "node",
           "style": "plain"
@@ -98,8 +98,8 @@
         {
           "properties": {
             "cache_duration": "none",
-            "folder_icon": "",
-            "home_icon": "",
+            "folder_icon": "",
+            "home_icon": "",
             "style": "agnoster_short"
           },
           "template": "{{ .Path }}",
@@ -111,7 +111,7 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "{{ if .Segments.Git }} • {{ end }}",
+          "template": "{{ if .Segments.Git }}\u2009•\u202f{{ end }}",
           "foreground": "p:yellow",
           "type": "text",
           "style": "plain"
@@ -121,25 +121,25 @@
             "branch_ahead_icon": "↑",
             "branch_behind_icon": "↓",
             "branch_gone_icon": "≢",
-            "branch_icon": "",
+            "branch_icon": "",
             "branch_identical_icon": "=",
             "branch_max_length": 25,
             "cache_duration": "none",
-            "cherry_pick_icon": "",
-            "commit_icon": "",
+            "cherry_pick_icon": "",
+            "commit_icon": "",
             "fetch_stash_count": true,
             "fetch_status": true,
             "fetch_upstream_icon": true,
-            "merge_icon": "",
+            "merge_icon": "",
             "no_commits_icon": "󰅌",
-            "rebase_icon": "",
-            "revert_icon": "",
-            "stash_icon": "",
-            "tag_icon": "",
+            "rebase_icon": "",
+            "revert_icon": "",
+            "stash_icon": "",
+            "tag_icon": "",
             "working_color": "p:peach",
             "staging_color": "p:green"
           },
-          "template": "{{ if .RepoName }}{{ .UpstreamIcon }} {{ .HEAD }} {{ if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <p:peach>{{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ end }}",
+          "template": "{{ if .RepoName }}{{ .UpstreamIcon }} <p:peach>{{ .HEAD }}</p:peach> {{ if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <p:peach>{{ .Working.String }}</p:peach>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</p:green>{{ end }}{{ end }}",
           "foreground": "p:mauve",
           "type": "git",
           "style": "plain",
