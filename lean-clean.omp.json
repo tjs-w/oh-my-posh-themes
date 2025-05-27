@@ -3,6 +3,7 @@
   "palette": {
     "base": "#1e1d2d",
     "blue": "#89b4fa",
+    "cyan": "#89dceb",
     "indigo": "#cdd6f4",
     "crust": "#11111b",
     "flamingo": "#f2cdcd",
@@ -43,7 +44,7 @@
             "fetch_version": true,
             "fetch_virtual_env": true
           },
-          "template": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
+          "template": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
           "foreground": "p:flamingo",
           "type": "python",
           "style": "plain"
@@ -54,8 +55,8 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
-          "foreground": "p:sky",
+          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
+          "foreground": "p:cyan",
           "type": "go",
           "style": "plain"
         },
@@ -65,7 +66,7 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
+          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
           "foreground": "p:mauve",
           "type": "rust",
           "style": "plain"
@@ -74,9 +75,18 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": "{{ if gt .Code 0 }} {{ .Code }}{{ end }}",
+          "template": " {{ if .Node }} {{ .Node }}{{ end }}",
+          "foreground": "p:peach",
+          "type": "node",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ if gt .Code 0 }} !{{ .Code }}{{ end }}",
           "foreground": "p:red",
-          "type": "exit",
+          "type": "text",
           "style": "plain"
         }
       ]
@@ -101,7 +111,7 @@
           "properties": {
             "cache_duration": "none"
           },
-          "template": " • ",
+          "template": "{{ if .Segments.Git }} • {{ end }}",
           "foreground": "p:yellow",
           "type": "text",
           "style": "plain"
@@ -121,13 +131,13 @@
             "fetch_status": true,
             "fetch_upstream_icon": true,
             "merge_icon": "",
-            "no_commits_icon": "",
+            "no_commits_icon": "󰅌",
             "rebase_icon": "",
             "revert_icon": "",
-            "staging_color": "p:green",
             "stash_icon": "",
             "tag_icon": "",
-            "working_color": "p:peach"
+            "working_color": "p:peach",
+            "staging_color": "p:green"
           },
           "template": "{{ if .RepoName }}{{ .UpstreamIcon }} {{ .HEAD }} {{ if .BranchStatus }}{{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <p:peach>{{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }} <p:green>{{ .Staging.String }}</>{{ end }}{{ end }}",
           "foreground": "p:mauve",
