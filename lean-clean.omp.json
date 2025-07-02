@@ -44,7 +44,7 @@
             "fetch_version": true,
             "fetch_virtual_env": true
           },
-          "template": " {{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
+          "template": "{{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
           "foreground": "p:flamingo",
           "type": "python",
           "style": "plain"
@@ -55,7 +55,7 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
+          "template": "{{ if .Version }} Go {{ .Version }}{{ end }}",
           "foreground": "p:cyan",
           "type": "go",
           "style": "plain"
@@ -66,7 +66,7 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": " {{ if .Version }}{{ .Version }}{{ end }}",
+          "template": "{{ if .Version }} {{ .Version }}{{ end }}",
           "foreground": "p:mauve",
           "type": "rust",
           "style": "plain"
@@ -76,7 +76,7 @@
             "cache_duration": "none",
             "display_mode": "context"
           },
-          "template": " {{ if .Node }} {{ .Node }}{{ end }}",
+          "template": "{{ if .Version }} {{ .Version }}{{ end }}",
           "foreground": "p:peach",
           "type": "node",
           "style": "plain"
@@ -87,7 +87,7 @@
           },
           "template": "{{ if gt .Code 0 }} !{{ .Code }}{{ end }}",
           "foreground": "p:red",
-          "type": "text",
+          "type": "exit",
           "style": "plain"
         }
       ]
@@ -99,8 +99,8 @@
         {
           "properties": {
             "cache_duration": "none",
-            "folder_icon": "",
-            "home_icon": "",
+            "folder_icon": "",
+            "home_icon": "",
             "style": "agnoster_short"
           },
           "template": "{{ .Path }}",
@@ -110,22 +110,16 @@
         },
         {
           "properties": {
-            "cache_duration": "none"
-          },
-          "template": "{{ if .Segments.Git }} • {{ end }}",
-          "foreground": "p:yellow",
-          "type": "text",
-          "style": "plain"
-        },
-        {
-          "properties": {
             "cache_duration": "none",
             "fetch_status": true,
             "fetch_stash_count": true,
             "fetch_upstream_icon": true
           },
-          "template": "{{ if .RepoName }}{{ if .Staging.Changed }}<p:mauve>{{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}</p:mauve>{{ if .Working.Changed }} <p:mauve>△{{ .Working.Modified }}</p:mauve>{{ end }} <p:mauve>▲{{ .Staging.Modified }}</p:mauve>{{ else if .Working.Changed }}<p:peach>{{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}</p:peach> <p:peach>△{{ .Working.Modified }}</p:peach>{{ else }}<p:green>{{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}</p:green>{{ end }}{{ end }}",
+          "template": "{{ if .RepoName }} • {{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} △{{ .Working.Modified }}{{ end }}{{ if .Staging.Changed }} ▲{{ .Staging.Modified }}{{ end }}{{ end }}",
           "foreground": "p:green",
+          "foreground_templates": [
+            "{{ if .Staging.Changed }}p:mauve{{ else if .Working.Changed }}p:peach{{ else }}p:green{{ end }}"
+          ],
           "type": "git",
           "style": "plain"
         },
