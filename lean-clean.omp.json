@@ -44,7 +44,7 @@
             "fetch_version": true,
             "fetch_virtual_env": true
           },
-          "template": "{{ if .Venv }}{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
+          "template": "{{ if .Venv }}⚡{{ .Venv }} {{ end }}{{ if .Full }}{{ .Full }}{{ end }}",
           "foreground": "p:flamingo",
           "type": "python",
           "style": "plain"
@@ -76,8 +76,8 @@
             "cache_duration": "none",
             "display_mode": "context"
           },
-          "template": "{{ if .Version }} {{ .Version }}{{ end }}",
-          "foreground": "p:peach",
+          "template": "{{ if .Version }} ⬢ {{ .Version }}{{ end }}",
+          "foreground": "p:green",
           "type": "node",
           "style": "plain"
         },
