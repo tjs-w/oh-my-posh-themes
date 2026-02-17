@@ -78,7 +78,7 @@
             "cache_duration": "none",
             "display_mode": "context"
           },
-          "template": "{{ if .Full }} ⬢ {{ .Full }}{{ end }}",
+          "template": "{{ if .Major }} ⬢ {{ .Major }}.{{ .Minor }}.{{ .Patch }}{{ end }}",
           "foreground": "p:green",
           "type": "node",
           "style": "plain"
