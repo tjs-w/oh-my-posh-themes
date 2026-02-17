@@ -31,7 +31,9 @@
   "transient_prompt": {
     "template": "❯ ",
     "foreground": "p:yellow",
-    "foreground_templates": ["{{ if .Root }}p:red{{ end }}"]
+    "foreground_templates": [
+      "{{ if .Root }}p:red{{ end }}"
+    ]
   },
   "blocks": [
     {
@@ -98,6 +100,15 @@
       "segments": [
         {
           "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ if .SSHSession }}{{ .HostName }} {{ end }}",
+          "foreground": "p:orange",
+          "type": "session",
+          "style": "plain"
+        },
+        {
+          "properties": {
             "cache_duration": "none",
             "folder_icon": "",
             "home_icon": "",
@@ -131,7 +142,9 @@
           "foreground": "p:yellow",
           "type": "text",
           "style": "plain",
-          "foreground_templates": ["{{ if .Root }}p:red{{ end }}"]
+          "foreground_templates": [
+            "{{ if .Root }}p:red{{ end }}"
+          ]
         }
       ]
     }
