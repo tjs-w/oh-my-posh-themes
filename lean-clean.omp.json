@@ -57,7 +57,7 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": "{{ if .Version }} Go {{ .Version }}{{ end }}",
+          "template": "{{ if .Full }} Go {{ .Full }}{{ end }}",
           "foreground": "p:cyan",
           "type": "go",
           "style": "plain"
@@ -68,7 +68,7 @@
             "display_mode": "context",
             "fetch_version": true
           },
-          "template": "{{ if .Version }} {{ .Version }}{{ end }}",
+          "template": "{{ if .Full }} {{ .Full }}{{ end }}",
           "foreground": "p:mauve",
           "type": "rust",
           "style": "plain"
@@ -78,7 +78,7 @@
             "cache_duration": "none",
             "display_mode": "context"
           },
-          "template": "{{ if .Version }} ⬢ {{ .Version }}{{ end }}",
+          "template": "{{ if .Full }} ⬢ {{ .Full }}{{ end }}",
           "foreground": "p:green",
           "type": "node",
           "style": "plain"
